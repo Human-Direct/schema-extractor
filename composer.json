@@ -1,0 +1,55 @@
+{
+  "name": "human-direct/schema-extractor",
+  "description": "A PHP 8.3 library for extracting Schema.org JSON-LD data",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Balazs Csaba",
+      "email": "balazscsaba2006@gmail.com",
+      "homepage": "https://www.humandirect.eu"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "symfony/dom-crawler": "^7.0",
+    "symfony/serializer": "^7.0",
+    "symfony/property-access": "^7.0",
+    "symfony/property-info": "^7.0",
+    "symfony/css-selector": "^7.0",
+    "phpdocumentor/reflection-docblock": "^5.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5",
+    "phpstan/phpstan": "^2.0",
+    "phpstan/phpstan-phpunit": "^2.0",
+    "phpstan/phpstan-symfony": "^2.0",
+    "phpstan/phpstan-strict-rules": "^2.0",
+    "phpstan/phpstan-deprecation-rules": "^2.0",
+    "friendsofphp/php-cs-fixer": "v3.67",
+    "dg/bypass-finals": "^1.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "HumanDirect\\SchemaExtractor\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "HumanDirect\\SchemaExtractor\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html coverage",
+    "cs:check": "PHP_CS_FIXER_PARALLEL=1 php-cs-fixer fix --dry-run --diff",
+    "cs:fix": "PHP_CS_FIXER_PARALLEL=1 php-cs-fixer fix",
+    "phpstan": "phpstan analyse -c phpstan.neon",
+    "check": [
+      "@cs:check",
+      "@phpstan",
+      "@test"
+    ]
+  }
+}
